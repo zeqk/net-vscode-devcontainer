@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
@@ -15,8 +16,7 @@
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
-                "uriFormat": "%s/WeatherForecast",
-                // "pattern": "\\bNow listening on:\\s+(http?://\\S+)"
+                "uriFormat": "%s/WeatherForecast"
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -24,7 +24,20 @@
             "sourceFileMap": {
                 "/src": "${workspaceFolder}/My.Example"
             }
+        },
+        {
+            "name": "Docker .NET Core Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "dockerServerReadyAction": {
+                "action": "openExternally",
+                "uriFormat": "%s://localhost:%s/WeatherForecast"
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/My.Example/My.Example.csproj",
+                // "debuggerPath": "/remote_debugger/vsdbg"
+            }
         }
-
     ]
 }
